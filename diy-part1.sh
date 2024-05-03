@@ -15,6 +15,17 @@ sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf
 
 rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box}
 
+git clone https://github.com/kiddin9/openwrt-packages
+shopt -s extglob
+rm -rf openwrt-packages/!(luci-app-netdata)
+cp -r openwrt-packages/{luci-app-netdata} package/
+rm -rf openwrt-packages
+
+
+
+
+git clone https://github.com/f8q8/luci-app-autoreboot package/luci-app-autoreboot
+
 #克隆passwall环境插件
 git clone https://github.com/xiaorouji/openwrt-passwall-packages package/helloworld
 #git clone --depth=1 -b 18.06 https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
