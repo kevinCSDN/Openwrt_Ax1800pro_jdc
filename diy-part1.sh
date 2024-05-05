@@ -12,14 +12,14 @@
 
 # Uncomment a feed source
 #sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+#sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 #rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box}
 
-git clone https://github.com/kiddin9/openwrt-packages
-shopt -s extglob
+#git clone https://github.com/kiddin9/openwrt-packages
+#shopt -s extglob
 #rm -rf openwrt-packages/!luci-app-netdata
-cp -r openwrt-packages/luci-app-netdata package/
-rm -rf openwrt-packages
+#cp -r openwrt-packages/luci-app-netdata package/
+#rm -rf openwrt-packages
 
 
 
