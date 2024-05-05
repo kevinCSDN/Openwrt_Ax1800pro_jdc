@@ -13,6 +13,7 @@
 # Uncomment a feed source
 #sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 #sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '$a src-git kenzo https://github.com//kiddin9/openwrt-packages' feeds.conf.default
 #rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box}
 
 #git clone https://github.com/kiddin9/openwrt-packages
