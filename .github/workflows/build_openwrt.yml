@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: BuildOpenWrt
+name: IPQ60XX-WIFI(EMMC)
 
 on:
   repository_dispatch:
@@ -24,12 +24,14 @@ on:
         default: 'true'
 
 env:
-  REPO_URL: https://github.com/JiaY-shi/openwrt
-  REPO_BRANCH: ipq60xx-devel_nss
+  REPO_URL: https://github.com/breeze303/openwrt-6.x.git
+  REPO_BRANCH: main
   FEEDS_CONF: feeds.conf.default
+  PATCHES_FILE_1: patches/0001-show-soc-status-on-luci.patch
   CONFIG_FILE: .config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
+  CLASH_KERNEL: amd64
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
@@ -85,23 +87,13 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-        sudo apt update -y
-        sudo apt full-upgrade -y
-        sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
-        bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \
-        git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libfuse-dev libglib2.0-dev libgmp3-dev \
-        libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libpython3-dev libreadline-dev \
-        libssl-dev libtool lrzsz mkisofs msmtp ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 \
-        python3-pyelftools python3-setuptools qemu-utils rsync scons squashfs-tools subversion swig texinfo \
-        uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
-        sudo -E apt-get -qq update
-        sudo -E apt-get -qq install $(curl -fsSL https://github.com/Jason6111/OpenWrt_Personal/raw/main/depends-ubuntu-2004)
-        sudo -E apt-get -qq autoremove --purge
-        sudo -E apt-get -qq clean
-        sudo timedatectl set-timezone "$TZ"
-        sudo mkdir -p /workdir
-        sudo chown $USER:$GROUPS /workdir
+        sudo rm -rf /usr/share/dotnet /etc/apt/sources.list.d /usr/local/lib/android $AGENT_TOOLSDIRECTORY
+        sudo -E apt-get -y purge azure-cli ghc* zulu* llvm* firefox google* dotnet* powershell openjdk* mongodb* moby* || true
+        sudo -E apt-get -y update
+        sudo -E apt-get -y install $(curl -fsSL is.gd/depends_ubuntu_2204)
+        sudo -E systemctl daemon-reload
+        sudo -E apt-get -y autoremove --purge
+        sudo -E apt-get -y clean
         sudo timedatectl set-timezone "$TZ"
         
     - name: Clone source code
@@ -130,6 +122,12 @@ jobs:
       
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a -f
+
+    - name: Apply patches(安装补丁)   
+      run: |
+        cp $PATCHES_FILE_1 $OPENWRT_PATH/feeds/luci
+        cd $OPENWRT_PATH/feeds/luci
+        git am 0001-show-soc-status-on-luci.patch
 
     - name: Openwrt AutoUpdate
       run: |
