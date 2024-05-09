@@ -28,6 +28,9 @@ env:
   UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: false
   UPLOAD_RELEASE: true
+  UPLOAD_FIRMWARE: true
+  UPLOAD_RELEASE: false
+  CONFIG: r2s
   TZ: Asia/Shanghai
 
 jobs:
