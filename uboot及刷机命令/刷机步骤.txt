@@ -1,0 +1,17 @@
+刷机参考地址：https://post.smzdm.com/p/an3eo74p/
+把usb转串口CH340G和路由器串口连接，usb转串口和路由器连接如下;GND-G,T-R,R-T即可
+用网线连接路由器lan口和电脑网口，按照下图设置自己的电脑有线网卡地址为192.168.10.1 
+把uboot文件放到和tftpd64在同一个目录
+接好TTL后，电脑打开putty软件，在电脑设备管理中找到USB转串口的串口号，我的是COM6
+所以我putty设置COM6，波特率115200。
+千万别忘接网线到lan口，否则下面命令无效：
+给路由器上电后电脑按enter按键，putty会显示进入IPQ6018#界面,然后输入
+tftpboot u-boot.mbn
+tftpboot u-boot.mbn && flash 0:APPSBL && flash 0:APPSBL_1
+等待执行完成后即可，给路由器断电，断开TTL连接，网线连接保留
+按着reset按键重新给路由器上电（按住10秒以上）
+按照上面给电脑设置ip的方法重新设置成192.168.1.88（最后一位随意）
+访问192.168.1.1
+上传固件，底包下载地址：
+wwf.lanzoul.com/iadjw1xswgzg
+uboot无法刷写超过60M的固件，IPQ6000自身的限制，刷超过100M的固件需要在底包上升级，这就是为什么需要刷2次。
