@@ -102,6 +102,8 @@ jobs:
         sudo -E apt-get -y autoremove --purge
         sudo -E apt-get -y clean
         sudo apt-get update
+        sudo apt update
+        sudo apt install libev lm-sensors luci-app-samba4 wsdd2 golang libpam liblzma libnetsnmp coreutils coreutils-base64 coreutils-nohup curl luci-compat luci-lib-jsonc luci-lua-runtime kmod-qca-nss-drv rust libsodium libudns boost boost-system boost-program-options boost-date-time
         sudo apt install libpcre2-8-0
         sudo rm /usr/lib/x86_64-linux-gnu/libpcre.so
         sudo ln -s /usr/lib/x86_64-linux-gnu/libpcre2-8.so /usr/lib/x86_64-linux-gnu/libpcre.so
