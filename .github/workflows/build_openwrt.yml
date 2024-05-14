@@ -16,8 +16,15 @@ on:
     inputs:
       ssh:
         description: 'SSH connection to Actions'
+        #required: false        
+        #default: 'false'
+        #默认不登录ssh
+
+        #登录ssh
         required: false
-        default: 'false'
+        default: 'true'
+        type: choice
+        
       cache:
         description: 'Cache wrt build'
         required: false
