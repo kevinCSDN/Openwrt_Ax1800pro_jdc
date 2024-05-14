@@ -102,6 +102,8 @@ jobs:
         sudo -E apt-get -y autoremove --purge
         sudo -E apt-get -y clean
         sudo apt-get install libpcre2-dev
+        sudo apt-get install libpcre3-dev
+        sudo apt-get install libpcre-dev
         sudo timedatectl set-timezone "$TZ"
         
     - name: Clone source code
