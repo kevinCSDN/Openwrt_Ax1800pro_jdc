@@ -23,7 +23,7 @@ on:
         #登录ssh
         required: false
         default: 'true'
-        type: choice
+        
         
       cache:
         description: 'Cache wrt build'
