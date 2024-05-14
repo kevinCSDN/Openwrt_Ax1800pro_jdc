@@ -90,59 +90,25 @@ jobs:
         echo "硬盘详情："
         df -Th
         
-    #- name: 初始化编译环境
-      #env:
-        #DEBIAN_FRONTEND: noninteractive
-      #run: |
-        #sudo rm -rf /usr/share/dotnet /etc/apt/sources.list.d /usr/local/lib/android $AGENT_TOOLSDIRECTORY
-        #sudo -E apt-get -y purge azure-cli ghc* zulu* llvm* firefox google* dotnet* powershell openjdk* mongodb* moby* || true
-        #sudo -E apt-get -y update
-        #sudo -E apt-get -y install $(curl -fsSL is.gd/depends_ubuntu_2204)
-        #sudo -E systemctl daemon-reload
-        #sudo -E apt-get -y autoremove --purge
-        #sudo -E apt-get -y clean
-        #sudo apt-get update
-        #sudo apt update
-        #sudo apt install libpcre2-8-0
-        #sudo rm /usr/lib/x86_64-linux-gnu/libpcre.so
-        #sudo ln -s /usr/lib/x86_64-linux-gnu/libpcre2-8.so /usr/lib/x86_64-linux-gnu/libpcre.so
-        #sudo timedatectl set-timezone "$TZ"
-
     - name: 初始化编译环境
       env:
-            DEBIAN_FRONTEND: noninteractive
+        DEBIAN_FRONTEND: noninteractive
       run: |
-          # 清理旧环境
-          sudo rm -rf /usr/share/dotnet /etc/apt/sources.list.d /usr/local/lib/android $AGENT_TOOLSDIRECTORY
-          sudo -E apt-get -y purge azure-cli ghc* zulu* llvm* firefox google* dotnet* powershell openjdk* mongodb* moby* || true
-    
-          # 更新apt-get源
-          sudo -E apt-get -y update
-    
-          # 安装依赖
-          sudo -E apt-get -y install $(curl -fsSL is.gd/depends_ubuntu_2204)
-    
-          # 重新加载系统守护进程
-          sudo -E systemctl daemon-reload
-    
-          # 清理不需要的包
-          sudo -E apt-get -y autoremove --purge
-    
-          # 清理缓存
-          sudo -E apt-get -y clean
-    
-          # 再次更新软件包
-          sudo apt-get update
-    
-          # 安装必需的软件包
-          sudo apt install -y libev lm-sensors luci-app-samba4 wsdd2 golang libpam liblzma libnetsnmp coreutils coreutils-base64 coreutils-nohup curl luci-compat luci-lib-jsonc luci-lua-runtime kmod-qca-nss-drv rust libsodium libudns boost boost-system boost-program-options boost-date-time libpcre2-8-0
-    
-          # 链接pcre库
-          sudo rm /usr/lib/x86_64-linux-gnu/libpcre.so
-          sudo ln -s /usr/lib/x86_64-linux-gnu/libpcre2-8.so /usr/lib/x86_64-linux-gnu/libpcre.so
-    
-          # 设置时区
-          sudo timedatectl set-timezone "$TZ"
+        sudo rm -rf /usr/share/dotnet /etc/apt/sources.list.d /usr/local/lib/android $AGENT_TOOLSDIRECTORY
+        sudo -E apt-get -y purge azure-cli ghc* zulu* llvm* firefox google* dotnet* powershell openjdk* mongodb* moby* || true
+        sudo -E apt-get -y update
+        sudo -E apt-get -y install $(curl -fsSL is.gd/depends_ubuntu_2204)
+        sudo -E systemctl daemon-reload
+        sudo -E apt-get -y autoremove --purge
+        sudo -E apt-get -y clean
+        sudo apt-get update
+        sudo apt update
+        sudo apt install libpcre2-8-0
+        sudo rm /usr/lib/x86_64-linux-gnu/libpcre.so
+        sudo ln -s /usr/lib/x86_64-linux-gnu/libpcre2-8.so /usr/lib/x86_64-linux-gnu/libpcre.so
+        sudo timedatectl set-timezone "$TZ"
+
+
 
     - name: Clone source code
       working-directory: /workdir
