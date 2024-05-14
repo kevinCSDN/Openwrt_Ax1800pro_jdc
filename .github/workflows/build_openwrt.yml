@@ -103,9 +103,6 @@ jobs:
         sudo -E apt-get -y clean
         sudo apt-get update
         sudo apt update
-        sudo apt install libpcre2-8-0
-        sudo rm /usr/lib/x86_64-linux-gnu/libpcre.so
-        sudo ln -s /usr/lib/x86_64-linux-gnu/libpcre2-8.so /usr/lib/x86_64-linux-gnu/libpcre.so
         sudo timedatectl set-timezone "$TZ"
 
 
