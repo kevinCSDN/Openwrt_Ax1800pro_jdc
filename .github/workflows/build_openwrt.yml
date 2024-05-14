@@ -16,13 +16,13 @@ on:
     inputs:
       ssh:
         description: 'SSH connection to Actions'
-        #required: false        
-        #default: 'false'
+        required: false        
+        default: 'false'
         #默认不登录ssh
 
         #登录ssh
-        required: false
-        default: 'true'
+        #required: false
+        #default: 'true'
         
         
       cache:
@@ -35,7 +35,7 @@ env:
   REPO_BRANCH: main
   FEEDS_CONF: feeds.conf.default
   PATCHES_FILE_1: patches/0001-show-soc-status-on-luci.patch
-  CONFIG_FILE: .config
+  CONFIG_FILE: 1.config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   CLASH_KERNEL: amd64
