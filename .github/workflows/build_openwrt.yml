@@ -35,7 +35,7 @@ env:
   REPO_BRANCH: main
   FEEDS_CONF: feeds.conf.default
   PATCHES_FILE_1: patches/0001-show-soc-status-on-luci.patch
-  CONFIG_FILE: 1.config
+  CONFIG_FILE: .config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   CLASH_KERNEL: amd64
