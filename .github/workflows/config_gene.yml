@@ -28,6 +28,7 @@ env:
   UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: false
   UPLOAD_RELEASE: true
+  TZ: Asia/Shanghai
 
 
   CONFIG: r2s
