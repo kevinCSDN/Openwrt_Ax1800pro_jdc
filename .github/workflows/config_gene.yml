@@ -32,7 +32,7 @@ env:
 
 
   CONFIG: r2s
-  TZ: Asia/Shanghai
+  
 
 jobs:
   build:
