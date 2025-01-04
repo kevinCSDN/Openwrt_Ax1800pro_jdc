@@ -118,13 +118,13 @@ jobs:
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a -f
 
-    - name: Apply patches(安装补丁)   
-      run: |
-        git config --global user.name "OpenWrt Builder"
-        git config --global user.email "buster-openwrt@ovvo.uk"
-        cp $PATCHES_FILE_1 openwrt/feeds/luci
-        cd openwrt/feeds/luci
-        git am 0001-show-soc-status-on-luci.patch
+    #- name: Apply patches(安装补丁)   
+     # run: |
+      #  git config --global user.name "OpenWrt Builder"
+       # git config --global user.email "buster-openwrt@ovvo.uk"
+        #cp $PATCHES_FILE_1 openwrt/feeds/luci
+        #cd openwrt/feeds/luci
+        #git am 0001-show-soc-status-on-luci.patch
 
     - name: Openwrt AutoUpdate
       run: |
