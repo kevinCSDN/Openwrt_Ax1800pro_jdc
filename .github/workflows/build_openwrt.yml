@@ -157,6 +157,7 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
         #cat package/lean/default-settings/files/zzz-default-settings
+        rm -rf package/feeds/small/v2ray-geodata
         
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
